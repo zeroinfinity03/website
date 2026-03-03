@@ -1,37 +1,47 @@
 "use client";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Briefcase } from "lucide-react";
 
 const experiences = [
   {
-    title: "Software Engineer, AI/ML",
-    date: "Jul 2025 - Present",
-    company: "Saayam For All",
-    location: "San Jose, CA",
+    title: "AI/ML Engineer (Contract)",
+    date: "May 2025 – Present",
+    company: "PayPal",
+    location: "United States",
     points: [
-      "Developed an AI summarization agent using OpenAI API with temperature 0.2 for consistent volunteer-form processing",
-      "Integrated LangGraph's agent state and memory for context-aware workflows, reducing manual triage time by 60%",
+      "Architected a real-time fraud risk scoring system using PyTorch and Scikit-learn, processing 2.7M+ payment events daily via Kafka and Spark Streaming, enabling low-latency risk decisions for instant transaction authorization.",
+      "Engineered an internal merchant support assistant using GPT-4 and LLaMA with RAG and FAISS vector DBs, resolving over 160,000 monthly support queries, cutting human workload by 40%.",
+      "Implemented payment anomaly detection models on AWS SageMaker using Python and SQL, identifying high-risk patterns that prevented $32M+ in potential transaction losses annually.",
+      "Orchestrated end-to-end MLOps pipelines with Docker, Kubernetes, MLflow, and CI/CD, enabling automated training, versioning, and deployment across 25+ production models.",
+      "Built a semantic search platform using embeddings, LangChain, and Vector DB to power internal compliance and dispute investigation tools, accelerating investigation time by 3x across 12,000+ case lookups per month.",
+      "Delivered microservice-based ML inference APIs using Python, REST, and AWS Lambda supporting 500K+ user interactions per day across checkout, wallet, and account protection workflows.",
+      "Oversaw model monitoring and drift detection frameworks using MLflow, CloudWatch, and Python dashboards, tracking performance across 6 global regions.",
     ],
   },
   {
-    title: "Data Analyst",
-    date: "Oct 2024 - May 2025",
-    company: "California State University, Fullerton",
-    location: "Fullerton, CA",
+    title: "AI/ML Engineer Intern",
+    date: "May 2024 – Jul 2024",
+    company: "PayPal",
+    location: "United States",
     points: [
-      "Built an AI Data Analyst using LangChain's Pandas DataFrame Agent for natural language querying",
-      "Extended agent with Python REPL for real-time Plotly visualizations, reducing reporting effort by 70%",
+      "Contributed to fraud risk research and exploratory ML model development during summer internship rotation.",
+      "Gained hands-on experience with PayPal's production ML infrastructure, Kafka streaming pipelines, and SageMaker model deployment workflows.",
     ],
   },
   {
-    title: "Associate Data Scientist",
-    date: "Aug 2020 - Jul 2022",
-    company: "iNeuron",
-    location: "Bengaluru, India",
+    title: "Machine Learning Scientist",
+    date: "Jan 2020 – Aug 2023",
+    company: "Capital One",
+    location: "India",
     points: [
-      "Developed a course recommendation engine using TF-IDF and cosine similarity metrics",
-      "Enhanced semantic similarity detection through text normalization, improving recommendation accuracy by 25%",
+      "Created a pilot GenAI risk and policy assistant using GPT-based models with LangChain and FAISS to support contextual search across 20,000+ policy and case documents, reducing research time by 50%.",
+      "Operationalized a real-time transaction risk pipeline using Python, SQL, and Kafka, scoring 1.2M+ card authorizations daily with sub-second latency.",
+      "Constructed a customer relationship graph using Neo4j and PyTorch Geometric to analyze 1.5M accounts, devices, and merchants, enabling detection of coordinated fraud networks.",
+      "Deployed an enterprise MLOps framework using MLflow, Docker, Kubernetes, and AWS SageMaker for 15+ production risk and customer analytics models.",
+      "Transformed large-scale data using Spark and Airflow, processing over 3.5 TB of transactional, behavioral, and bureau data weekly into reusable feature pipelines.",
+      "Established model explainability frameworks (SHAP and LIME) for risk and fraud models, facilitating regulatory compliance reviews.",
+      "Developed an NLP-driven customer insight platform using BERT (PyTorch, Hugging Face) to classify complaints and detect emerging risk themes from 50–55K monthly customer interactions.",
+      "Led Bayesian experimentation and A/B testing frameworks for credit line and pricing strategies, supporting 20+ controlled experiments adopted by risk and product leadership.",
     ],
   },
 ];
@@ -41,58 +51,46 @@ export default function Experience() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="experience" className="py-32 relative">
-      <div className="absolute left-0 top-1/2 -translate-y-1/2 w-72 h-72 bg-purple-500/20 rounded-full blur-[128px] pointer-events-none" />
-      
-      <div className="max-w-4xl mx-auto px-6" ref={ref}>
+    <section id="experience" className="py-28 px-6" ref={ref}>
+      <div className="max-w-3xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          transition={{ duration: 0.5 }}
+          className="mb-12"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Work <span className="gradient-text">Experience</span>
-          </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 mx-auto rounded-full" />
+          <p className="text-xs text-[#555] uppercase tracking-widest mb-4 font-mono">Career</p>
+          <h2 className="text-3xl font-bold text-white">Work Experience</h2>
         </motion.div>
 
-        <div className="relative">
-          {/* Timeline line */}
-          <div className="absolute left-8 top-0 bottom-0 w-px bg-gradient-to-b from-indigo-500 via-purple-500 to-pink-500 hidden md:block" />
-
+        <div className="space-y-0">
           {experiences.map((exp, i) => (
             <motion.div
               key={i}
-              className="relative pl-0 md:pl-20 mb-12 last:mb-0"
-              initial={{ opacity: 0, x: -30 }}
-              animate={isInView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.2 + i * 0.15 }}
+              className="relative pl-6 border-l border-[#1f1f1f] pb-12 last:pb-0"
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: 0.1 + i * 0.1 }}
             >
-              {/* Timeline dot */}
-              <div className="absolute left-[22px] top-8 w-5 h-5 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 hidden md:flex items-center justify-center pulse-glow">
-                <div className="w-2 h-2 bg-white rounded-full" />
+              <div className="absolute -left-[5px] top-1.5 w-2.5 h-2.5 rounded-full bg-[#1f1f1f] border border-[#3a3a3a]" />
+
+              <div className="flex flex-wrap justify-between items-start gap-2 mb-1">
+                <div>
+                  <h3 className="text-white font-semibold">{exp.title}</h3>
+                  <p className="text-blue-400 text-sm mt-0.5">{exp.company}</p>
+                  <p className="text-[#555] text-xs mt-0.5">{exp.location}</p>
+                </div>
+                <span className="text-xs text-[#555] font-mono mt-1">{exp.date}</span>
               </div>
 
-              <div className="glass-card p-8 rounded-2xl hover:scale-[1.02] transition-all duration-300 gradient-border group">
-                <div className="flex flex-wrap justify-between items-start gap-4 mb-4">
-                  <div>
-                    <h3 className="text-xl font-bold text-white group-hover:text-indigo-300 transition-colors">{exp.title}</h3>
-                    <p className="text-indigo-400 font-medium">{exp.company}</p>
-                    <p className="text-gray-500 text-sm">{exp.location}</p>
-                  </div>
-                  <span className="px-4 py-2 bg-indigo-500/20 text-indigo-300 rounded-full text-sm font-mono">
-                    {exp.date}
-                  </span>
-                </div>
-                <ul className="space-y-3">
-                  {exp.points.map((point, j) => (
-                    <li key={j} className="text-gray-400 text-sm pl-6 relative before:content-['▹'] before:absolute before:left-0 before:text-indigo-400 before:font-bold leading-relaxed">
-                      {point}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              <ul className="mt-4 space-y-2">
+                {exp.points.map((point, j) => (
+                  <li key={j} className="text-[#737373] text-sm leading-relaxed flex gap-2">
+                    <span className="text-[#444] mt-1.5 shrink-0">—</span>
+                    {point}
+                  </li>
+                ))}
+              </ul>
             </motion.div>
           ))}
         </div>

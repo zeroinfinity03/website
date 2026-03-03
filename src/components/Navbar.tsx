@@ -22,23 +22,25 @@ export default function Navbar() {
   }, []);
 
   return (
-    <motion.nav 
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "bg-[#030014]/90 backdrop-blur-xl border-b border-white/5" : ""}`}
+    <motion.nav
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled ? "bg-[#0c0c0c]/95 backdrop-blur-md border-b border-[#1f1f1f]" : ""
+      }`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      transition={{ duration: 0.5 }}
+      transition={{ duration: 0.4 }}
     >
-      <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-        <Link href="/" className="text-2xl font-bold gradient-text hover:scale-105 transition-transform">
+      <div className="max-w-5xl mx-auto px-6 py-5 flex justify-between items-center">
+        <Link href="/" className="text-lg font-semibold text-white tracking-tight hover:text-blue-400 transition-colors">
           SS
         </Link>
-        
-        <ul className="hidden md:flex gap-1">
+
+        <ul className="hidden md:flex gap-1 items-center">
           {navLinks.map((link) => (
             <li key={link.href}>
-              <a 
-                href={link.href} 
-                className="px-4 py-2 text-gray-400 hover:text-white hover:bg-white/5 rounded-lg transition-all font-medium text-sm"
+              <a
+                href={link.href}
+                className="px-4 py-2 text-sm text-[#a3a3a3] hover:text-white transition-colors"
               >
                 {link.label}
               </a>
@@ -46,50 +48,44 @@ export default function Navbar() {
           ))}
         </ul>
 
-        <a 
-          href="mailto:vik03surya@gmail.com" 
-          className="hidden md:block px-5 py-2 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-lg font-medium text-sm hover:opacity-90 transition-opacity"
+        <a
+          href="mailto:vik03surya@gmail.com"
+          className="hidden md:block px-4 py-2 border border-[#2a2a2a] text-sm text-[#a3a3a3] hover:text-white hover:border-[#444] rounded-md transition-all"
         >
           Hire Me
         </a>
 
-        <button 
-          onClick={() => setIsOpen(!isOpen)} 
-          className="md:hidden flex flex-col gap-1.5 p-2" 
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className="md:hidden flex flex-col gap-1.5 p-2"
           aria-label="Toggle menu"
         >
-          <span className={`w-6 h-0.5 bg-white transition-all duration-300 ${isOpen ? "rotate-45 translate-y-2" : ""}`} />
-          <span className={`w-6 h-0.5 bg-white transition-all duration-300 ${isOpen ? "opacity-0" : ""}`} />
-          <span className={`w-6 h-0.5 bg-white transition-all duration-300 ${isOpen ? "-rotate-45 -translate-y-2" : ""}`} />
+          <span className={`w-5 h-0.5 bg-white transition-all duration-300 ${isOpen ? "rotate-45 translate-y-2" : ""}`} />
+          <span className={`w-5 h-0.5 bg-white transition-all duration-300 ${isOpen ? "opacity-0" : ""}`} />
+          <span className={`w-5 h-0.5 bg-white transition-all duration-300 ${isOpen ? "-rotate-45 -translate-y-2" : ""}`} />
         </button>
       </div>
 
-      {/* Mobile menu */}
-      <motion.div 
-        className={`md:hidden overflow-hidden ${isOpen ? "max-h-96" : "max-h-0"}`}
-        initial={false}
-        animate={{ height: isOpen ? "auto" : 0 }}
-        transition={{ duration: 0.3 }}
-      >
-        <div className="bg-[#030014]/95 backdrop-blur-xl border-t border-white/5 px-6 py-4 space-y-2">
+      {isOpen && (
+        <div className="md:hidden bg-[#0c0c0c] border-t border-[#1f1f1f] px-6 py-4 space-y-1">
           {navLinks.map((link) => (
-            <a 
-              key={link.href} 
-              href={link.href} 
-              onClick={() => setIsOpen(false)} 
-              className="block py-3 text-gray-400 hover:text-white hover:pl-2 transition-all"
+            <a
+              key={link.href}
+              href={link.href}
+              onClick={() => setIsOpen(false)}
+              className="block py-3 text-sm text-[#a3a3a3] hover:text-white transition-colors"
             >
               {link.label}
             </a>
           ))}
-          <a 
-            href="mailto:vik03surya@gmail.com" 
-            className="block py-3 text-indigo-400 font-medium"
+          <a
+            href="mailto:vik03surya@gmail.com"
+            className="block py-3 text-sm text-blue-400"
           >
-            Hire Me →
+            Hire Me
           </a>
         </div>
-      </motion.div>
+      )}
     </motion.nav>
   );
 }
