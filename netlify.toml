@@ -1,6 +1,10 @@
+# Static site. No build step, no framework plugins.
 [build]
   publish = "."
-  command = ""
+  command = "echo 'static site, nothing to build'"
+
+[build.environment]
+  NETLIFY_NEXT_PLUGIN_SKIP = "true"
 
 [[headers]]
   for = "/*"
@@ -10,5 +14,10 @@
 
 [[headers]]
   for = "/styles.css"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"
+
+[[headers]]
+  for = "/script.js"
   [headers.values]
     Cache-Control = "public, max-age=3600"
