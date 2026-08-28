@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en" data-theme="">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Surya Vikram Singh, Software Engineer</title>
+<meta name="description" content="Software engineer, 4+ years. Backend first, applied AI now. I build GenAI systems and the infrastructure that keeps them running in production.">
+<meta property="og:title" content="Surya Vikram Singh, Software Engineer">
+<meta property="og:description" content="I build GenAI systems and the infrastructure that keeps them running in production.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0B0C0E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;520;600;640&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' font-family='monospace'>S</text></svg>">
+</head>
+<body>
+
+<nav id="nav">
+  <div class="wrap">
+    <a href="#top" class="mark">Surya Vikram Singh <span>· Software Engineer</span></a>
+    <a class="nl" href="#work">Work</a>
+    <a class="nl" href="#experience">Experience</a>
+    <a class="nl" href="#toolkit">Toolkit</a>
+    <a class="nl" href="#contact">Contact</a>
+    <button class="icon-btn" id="theme" aria-label="Toggle theme">◑</button>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="eyebrow rv"><span class="dot"></span> Open to Software Engineer / Applied AI roles</div>
+    <h1 class="rv">I build GenAI systems, and the infrastructure that keeps them running.</h1>
+    <p class="lede rv">Software engineer, four-plus years. I started in backend, owning the serving layer for a production recommendation system, and now I ship GenAI products into production for clients on AWS. Most of my work sits where the model meets the system: retrieval, evaluation, cost, and the telemetry underneath.</p>
+    <div class="cta rv">
+      <a class="btn primary" href="#work">See selected work →</a>
+      <a class="btn ghost" href="mailto:vik03surya@gmail.com">Email me</a>
+      <a class="btn ghost" href="resume.pdf" target="_blank" rel="noopener">Résumé (PDF)</a>
+    </div>
+
+    <div class="metrics rv">
+      <div class="metric"><b>50%+</b><small>Input tokens cut on a production agent by redesigning how it loads its tools</small></div>
+      <div class="metric"><b>220ms → 40ms</b><small>p95 latency on a serving layer running at 500 requests per second</small></div>
+      <div class="metric"><b>70%</b><small>Reporting effort removed for a university team with an analytics agent</small></div>
+    </div>
+  </div>
+</header>
+
+<section id="work">
+  <div class="wrap">
+    <div class="sec-head rv"><span class="sec-num">01</span><h2>Selected work</h2><span class="sec-note">Personal projects. Client work is under Experience.</span></div>
+    <div class="work">
+
+      <article class="proj rv">
+        <div class="proj-top">
+          <h3>Multi-Agent Research Assistant</h3>
+          <div class="proj-links"><a class="chip" href="https://github.com/zeroinfinity03/knowflow-beta1.0" target="_blank" rel="noopener">GitHub &#8599;</a></div>
+        </div>
+        <dl class="pl">
+          <dt>Problem</dt><dd>Research questions that span several independent sources mean opening each one, reading it separately, and reconciling the answers by hand.</dd>
+          <dt>Built</dt><dd>A supervisor on LangGraph that decomposes each request and fans out to specialist agents, each owning one data source and running concurrently. Their results are merged and de-duplicated into a single answer.</dd>
+          <dt>Outcome</dt><dd><strong>One grounded, citation-backed report</strong> from work that previously had to be reconciled manually.</dd>
+        </dl>
+        <div class="stack"><span class="tag">Python</span><span class="tag">LangGraph</span><span class="tag">Multi-agent</span><span class="tag">Concurrency</span></div>
+      </article>
+
+      <article class="proj rv">
+        <div class="proj-top">
+          <h3>Open-source fine-tuning &amp; quantization</h3>
+          <div class="proj-links"><a class="chip" href="https://huggingface.co/zero0303/models" target="_blank" rel="noopener">Hugging Face &#8599;</a></div>
+        </div>
+        <dl class="pl">
+          <dt>Problem</dt><dd>Good open models exist, but they do not fit on the hardware most people actually own.</dd>
+          <dt>Built</dt><dd>Fine-tuned Qwen3 4B and LFM2.5 1.2B on a domain-specific DSL, and Qwen3-TTS 1.7B on LJSpeech for single-speaker voice adaptation. Published MLX 4/6/8-bit and GGUF builds, plus a 4-bit multimodal MedGemma 4B.</dd>
+          <dt>Outcome</dt><dd><strong>Eight public model repos</strong>, each running on consumer hardware.</dd>
+        </dl>
+        <div class="stack"><span class="tag">PyTorch</span><span class="tag">LoRA / QLoRA</span><span class="tag">MLX</span><span class="tag">GGUF</span><span class="tag">Quantization</span></div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="sec-head rv"><span class="sec-num">02</span><h2>Experience</h2></div>
+    <div class="xp">
+      <div class="row rv">
+        <div class="when">2025, Present</div>
+        <div>
+          <h3>Applied AI Engineer</h3>
+          <div class="org">Shivoy, Inc · Virginia</div>
+          <p>I build and run the agent platform behind client GenAI products on AWS. I designed a centralised MCP tool server with semantic tool discovery, so the agent loads only the two or three schemas a query needs instead of the whole catalog, which cut input tokens by more than 50% and the inference cost with them. I re-architected the agent loop from iterative tool-calling to sandboxed code execution, built the retrieval layer on OpenSearch with hybrid vector and BM25 search, and own the LLM-as-a-judge harness that gates every prompt, embedding and retrieval change before release. I run it in production too: the tracing, the alerts, and the debugging when something breaks.</p>
+        </div>
+      </div>
+      <div class="row rv">
+        <div class="when">2024, 2025</div>
+        <div>
+          <h3>Software Engineer, AI/ML</h3>
+          <div class="org">CSUF, Office of Graduate Studies · Fullerton, CA</div>
+          <p>Replaced a manual reporting process with an analytics agent on LangChain's Pandas DataFrame Agent behind a FastAPI backend, with a Python REPL tool generating charts on the fly. Cut reporting effort by 70%, iterating weekly with the staff who used it.</p>
+        </div>
+      </div>
+      <div class="row rv">
+        <div class="when">2020, 2023</div>
+        <div>
+          <h3>Software Engineer</h3>
+          <div class="org">iNeuron · Bengaluru, India</div>
+          <p>Owned the Flask serving layer for a production recommendation system. Built the content-based recommender itself (TF-IDF and cosine similarity, +25% accuracy), scaled the read path with a Redis precompute-and-cache architecture, and carried the pager for it on AWS.</p>
+        </div>
+      </div>
+      <div class="row rv">
+        <div class="when">2023, 2025</div>
+        <div>
+          <h3>MS, Information Systems · Data Science &amp; ML</h3>
+          <div class="org">California State University, Fullerton</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="toolkit">
+  <div class="wrap">
+    <div class="sec-head rv"><span class="sec-num">03</span><h2>Toolkit</h2><span class="sec-note">Things I've shipped with, not things I've read about</span></div>
+    <div class="kit">
+      <div class="rv">
+        <h4>Languages</h4>
+        <ul><li>Python</li><li>SQL</li><li>TypeScript</li><li>Go</li><li>Bash</li><li>Git</li><li>Object-oriented design</li><li>Design patterns</li><li>Code review</li><li>Testing</li></ul>
+      </div>
+      <div class="rv">
+        <h4>ML &amp; Generative AI</h4>
+        <ul><li>Model serving</li><li>PyTorch</li><li>PyTorch Lightning</li><li>SageMaker</li><li>Bedrock</li><li>Hugging Face</li><li>LoRA / QLoRA</li><li>Quantization</li><li>LangChain</li><li>LangGraph</li><li>MCP</li><li>RAG</li><li>Evaluation</li></ul>
+      </div>
+      <div class="rv">
+        <h4>Distributed Systems</h4>
+        <ul><li>Service design</li><li>Microservices</li><li>Event-driven pipelines</li><li>Caching &amp; invalidation</li><li>Fault tolerance</li><li>Graceful degradation</li><li>Latency tuning</li><li>Reliability &amp; scaling</li></ul>
+      </div>
+      <div class="rv">
+        <h4>Observability &amp; Operations</h4>
+        <ul><li>Telemetry</li><li>Monitoring &amp; alarms</li><li>Distributed tracing</li><li>Structured logging</li><li>Health checks</li><li>On-call escalation</li><li>CloudWatch</li><li>Performance profiling</li></ul>
+      </div>
+      <div class="rv">
+        <h4>Backend &amp; Data</h4>
+        <ul><li>FastAPI</li><li>Flask</li><li>REST APIs</li><li>Pydantic</li><li>async/await</li><li>PostgreSQL</li><li>DynamoDB</li><li>Redis</li><li>S3</li><li>OpenSearch</li><li>ETL pipelines</li></ul>
+      </div>
+      <div class="rv">
+        <h4>Cloud &amp; SDLC</h4>
+        <ul><li>AWS EC2</li><li>Lambda</li><li>API Gateway</li><li>ECS / Fargate</li><li>Docker</li><li>Kubernetes</li><li>CI/CD</li><li>GitHub Actions</li><li>Release automation</li><li>Documentation</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <h2 class="rv">Let's talk.</h2>
+    <p class="rv">I'm open to software engineering and applied AI roles. The fastest way to reach me is email.</p>
+    <div class="links rv">
+      <a class="btn primary" href="mailto:vik03surya@gmail.com">vik03surya@gmail.com</a>
+      <a class="btn ghost" href="https://www.linkedin.com/in/surya-singh-412564233/" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a class="btn ghost" href="https://github.com/zeroinfinity03" target="_blank" rel="noopener">GitHub ↗</a>
+      <a class="btn ghost" href="https://huggingface.co/zero0303/models" target="_blank" rel="noopener">Hugging Face ↗</a>
+      <a class="btn ghost" href="https://leetcode.com/u/surya0303/" target="_blank" rel="noopener">LeetCode ↗</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>Surya Vikram Singh · Manassas, Virginia</span>
+    <span>Built as a static site. No framework, no build step.</span>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
